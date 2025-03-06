@@ -13,6 +13,11 @@ import { ephemeralFetchConversation } from "./messageFetch";
 import { callKindroidAI } from "./kindroidAPI";
 import { BotConfig, DMConversationCount } from "./types";
 
+const BANNED_USERS = new Set([
+  "1036607872043327588",  // Replace with actual user IDs
+  "1030600951570116678"
+]);
+
 //Bot back and forth (prevent infinite loop but allow for mentioning other bots in conversation)
 type BotConversationChain = {
   chainCount: number; // how many consecutive bot messages
