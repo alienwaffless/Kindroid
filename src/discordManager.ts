@@ -143,6 +143,10 @@ async function createDiscordClientForBot(
   // Handle incoming messages
   client.on("messageCreate", async (message: Message) => {
     // If the message is from the same bot, skip (avoid self-mention loops)
+
+    if (BANNED_USERS.has(message.author.id)) {
+    return;
+    }
     if (message.author.bot && message.author.id === client.user?.id) {
       return;
     }
@@ -258,6 +262,9 @@ async function handleDirectMessage(
   message: Message,
   botConfig: BotConfig
 ): Promise<void> {
+  if (BANNED_USERS.has(message.author.id)) {
+    return;
+  }
   const userId = message.author.id;
   const dmKey = `${botConfig.id}-${userId}`;
 
