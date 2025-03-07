@@ -14,7 +14,7 @@ import { callKindroidAI } from "./kindroidAPI";
 import { BotConfig, DMConversationCount } from "./types";
 
 const BANNED_USERS = new Set([
-  "1036607872043327588"
+  //"1036607872043327588"
 ]);
 
 //Bot back and forth (prevent infinite loop but allow for mentioning other bots in conversation)
